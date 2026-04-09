@@ -214,6 +214,47 @@ docker run -d -p 8083:80 -v myvolume:/usr/share/nginx/html nginx
 
 18.
 
+Create a folder:
+
+java-docker-demo
+
+Hello.java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello from Docker Java Container");
+    }
+}
+dockerfile
+
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY . /app
+RUN javac Hello.java
+CMD ["java","Hello"]
+
+Inside your project folder run:
+
+docker build -t java-app .
+
+Check the image:
+
+docker images
+
+docker tag java-app shreya2811/java-app:v1
+
+Now check images again:
+
+docker images
+
+docker login
+
+docker push shreya2811/java-app:v1
+
+docker pull shreya2811/java-app:v1
+docker run shreya2811/java-app:v1
+
+
+
 
 
 
