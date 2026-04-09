@@ -243,6 +243,150 @@ docker build -t java-app .
 docker run -d -t java-app
 
 
+public class Calculator {
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public int divide(int a, int b) {
+        return a / b;
+    }
+}
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class CalculatorTest {
+
+    Calculator calc = new Calculator();
+
+    @Test
+    void testAdd() {
+        assertEquals(5, calc.add(2,3));
+    }
+
+    @Test
+    void testSubtract() {
+        assertEquals(2, calc.subtract(5,3));
+    }
+
+    @Test
+    void testMultiply() {
+        assertEquals(6, calc.multiply(2,3));
+    }
+
+    @Test
+    void testDivide() {
+        assertEquals(2, calc.divide(6,3));
+    }
+}
+
+
+public class Greatest {
+
+    public int findGreatest(int a, int b, int c) {
+        if(a >= b && a >= c)
+            return a;
+        else if(b >= a && b >= c)
+            return b;
+        else
+            return c;
+    }
+}
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class GreatestTest {
+
+    Greatest g = new Greatest();
+
+    @Test
+    void testGreatest() {
+        assertEquals(9, g.findGreatest(9,5,3));
+    }
+}
+
+
+
+public class LinearSearch {
+
+    public int search(int arr[], int key) {
+        for(int i=0;i<arr.length;i++) {
+            if(arr[i]==key)
+                return i;
+        }
+        return -1;
+    }
+}
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class LinearSearchTest {
+
+    LinearSearch ls = new LinearSearch();
+
+    @Test
+    void testSearch() {
+        int arr[] = {10,20,30,40};
+        assertEquals(2, ls.search(arr,30));
+    }
+}
+
+
+public class BankAccount {
+
+    double balance = 0;
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+
+
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+class BankAccountTest {
+
+    BankAccount acc = new BankAccount();
+
+    @Test
+    void testDeposit() {
+        acc.deposit(1000);
+        assertEquals(1000, acc.getBalance());
+    }
+
+    @Test
+    void testWithdraw() {
+        acc.deposit(1000);
+        acc.withdraw(200);
+        assertEquals(800, acc.getBalance());
+    }
+}
+
+
+
 
 
 
